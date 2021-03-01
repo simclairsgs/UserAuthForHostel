@@ -14,4 +14,8 @@ class Master_Db(models.Model):
     Father_Name = models.CharField(max_length=20)
     Genter = models.CharField(max_length=10)
     Date_of_birth = models.CharField(max_length=10)
+
     
+class Login_Auth_Db(models.Model):
+    Register_No = models.CharField(max_length=10,primary_key=True)
+    Otp = models.CharField(max_length=10)
