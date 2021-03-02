@@ -15,10 +15,23 @@ def index(request):
 def login_user(request):
     register_no = request.data.get("Register_No")
     otp = request.data.get('Otp')
+    key = request.data.get('Key')
     try:
+
         register_num = Login_Auth_Db.objects.get(Register_No= register_no)
-        print(register_num)
-        return Response("succeses")
+        otpnum = Login_Auth_Db.objects.get(Otp = otp)
+
+        if(key == "t(j3zi6jwui$0r6+v94bbct!u^&^krwt-!qulz3(qm^7=mgpc1"):
+            if(register_num.Register_No == register_no):
+                print("registernum")
+
+                if(otpnum.Otp == otp):
+                    from random import randint
+                    create_random=(randint(10000000, 999999999))
+                    otpnum.Otp = create_random
+                    otpnum.save()
+                    return Response("Succeses")
+   
     except:
-        print("fail")
         return Response("failed")
+    return Response("completely failed")
