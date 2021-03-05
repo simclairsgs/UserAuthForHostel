@@ -6,6 +6,8 @@ from rest_framework.response import Response
 from rest_framework import status
 from .models import Master_Db,Login_Auth_Db
 from .serializers import Master_DbSerializer,Login_Auth_DbSerializer
+from backend_Mp import settings
+
 
 # Create your views here.
 def index(request):
@@ -18,7 +20,7 @@ def login_user(request):
     otp = request.data.get('Otp')
     key = request.data.get('Key')
     print(register_no)
-    if(key == "t(j3zi6jwui$0r6+v94bbct!u^&^krwt-!qulz3(qm^7=mgpc1"):
+    if(key == settings.SECRET_KEY):
         try:
 
             register_num = Login_Auth_Db.objects.get(Register_No= register_no)
