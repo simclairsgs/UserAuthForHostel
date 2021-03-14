@@ -12,10 +12,16 @@ class Master_Db(models.Model):
     Department = models.CharField(max_length=10)
     Class = models.CharField(max_length=10)
     Father_Name = models.CharField(max_length=20)
-    Genter = models.CharField(max_length=10)
+    Gender = models.CharField(max_length=10)
     Date_of_birth = models.CharField(max_length=10)
 
     
 class Login_Auth_Db(models.Model):
     Register_No = models.CharField(max_length=10,primary_key=True)
     Otp = models.CharField(max_length=10)
+
+class Today_Attendance_Db(models.Model):
+    Register_No = models.CharField(max_length=10,primary_key=True)
+    Auth_Status = models.BooleanField()
+    Auth_Time = models.CharField(max_length=20)
+    Date = models.CharField(max_length=10) 
