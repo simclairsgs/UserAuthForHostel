@@ -4,10 +4,19 @@ from rest_framework.decorators import api_view
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
-from .models import Master_Db,Login_Auth_Db
-from .serializers import Master_DbSerializer,Login_Auth_DbSerializer
+from .models import Master_Db,Login_Auth_Db,Today_Attendance_Db
+from .serializers import Master_DbSerializer,Login_Auth_DbSerializer,Today_Attendance_DbSerializer
 from backend_Mp import settings
 from . import tests
+from . import automatedTasks
+from apscheduler.schedulers.background import BackgroundScheduler
+from django.conf import settings
+
+scheduler = BackgroundScheduler()
+
+scheduler.add_job(automatedTasks.all_tasks,'cron',hour='*')
+scheduler.start()
+
 
 def index(request):
     return HttpResponse('<h1>You are Successfully connected to the Authentication Network.</h1>')
@@ -41,3 +50,14 @@ def login_user(request):
     else:
         return Response({"Error":"InvalidKey"})
 
+
+@api_view(['POST'])
+def CheckAuthStatus(request):
+    register_no = request.data.get("Register_No")
+    key = request.data.get('Key')
+    if key == settings.SECRET_KEY or tests.TEST_MODE:
+        try:
+            data = Today_Attendance_Db.objects.get(Register_No = register_no)
+            return Response({"Status":data.Auth_Status})
+        except:
+            return Response({"Error":"ERR-CODE-404"})
