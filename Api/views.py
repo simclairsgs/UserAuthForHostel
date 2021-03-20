@@ -8,15 +8,13 @@ from .models import Master_Db,Login_Auth_Db,Today_Attendance_Db
 from .serializers import Master_DbSerializer,Login_Auth_DbSerializer,Today_Attendance_DbSerializer
 from backend_Mp import settings
 from . import tests
-from . import automatedTasks
-from apscheduler.schedulers.background import BackgroundScheduler
-from django.conf import settings
+from .import automatedTasks
+from datetime import datetime,date
+from pytz import timezone
+IST = timezone('Asia/Kolkata')
 
-scheduler = BackgroundScheduler()
 
-scheduler.add_job(automatedTasks.all_tasks,'cron',hour='*')
-scheduler.start()
-
+automatedTasks.main()
 
 def index(request):
     return HttpResponse('<h1>You are Successfully connected to the Authentication Network.</h1>')
@@ -58,6 +56,33 @@ def CheckAuthStatus(request):
     if key == settings.SECRET_KEY or tests.TEST_MODE:
         try:
             data = Today_Attendance_Db.objects.get(Register_No = register_no)
-            return Response({"Status":data.Auth_Status})
+            now = datetime.now(IST)
+            if now.hour > tests.AUTH_ALLOW_START and now.hour<tests.AUTH_ALLOW_END:
+                if data.Auth_Status:
+                    return Response({"Status":data.Auth_Status,"Allow_auth":False})
+                else:
+                    return Response({"Status":data.Auth_Status,"Allow_auth":True})
+            else:
+                return Response({"Status":data.Auth_Status,"Allow_auth":False})
         except:
             return Response({"Error":"ERR-CODE-404"})
+    else:
+        return Response({"Error":"InvalidKey"})
+
+
+@api_view(['POST'])
+def authUser(request):
+    register_no = request.data.get("Register_No")
+    key = request.data.get('Key')
+    if key == settings.SECRET_KEY or tests.TEST_MODE:
+        try:
+            data = Today_Attendance_Db.objects.get(Register_No = register_no)
+            data.Auth_Status = True
+            data.Auth_Time = datetime.now(IST)
+            data.Date = date.today()
+            data.save()
+            return Response({"Status":"success"})
+        except:
+            return Response({"Error":"ERR-CODE-403","Status":"failed"})
+    else:
+        return Response({"Error":"InvalidKey"})
