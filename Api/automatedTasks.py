@@ -1,5 +1,5 @@
 from apscheduler.schedulers.background import BackgroundScheduler
-
+from .import tests
 
 def reset_auth_db():
     print('>>> Reset Auth DB task started... <<<')
@@ -25,7 +25,7 @@ def all_tasks():
 def main():
     scheduler = BackgroundScheduler(timezone="Asia/kolkata")
     print("Automated tasks init...")
-    scheduler.add_job(reset_auth_db,'cron',hour=0)
+    scheduler.add_job(reset_auth_db,'cron',hour=tests.RST_DB_GEN_RPRT_TIME)
     scheduler.start()
 
 
