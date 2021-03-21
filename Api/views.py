@@ -57,7 +57,7 @@ def CheckAuthStatus(request):
         try:
             data = Today_Attendance_Db.objects.get(Register_No = register_no)
             now = datetime.now(IST)
-            if now.hour > tests.AUTH_ALLOW_START and now.hour<tests.AUTH_ALLOW_END:
+            if now.hour >= tests.AUTH_ALLOW_START and now.hour<tests.AUTH_ALLOW_END:
                 if data.Auth_Status:
                     return Response({"Status":data.Auth_Status,"Allow_auth":False})
                 else:
