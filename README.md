@@ -6,6 +6,7 @@
 ><http://github.com/simclairsgs>
  
  
+ 
 > # How to use ?
 >
 > - After the user account is created from django admin and the user can install the android app and login using the OTP provided by the admin.
@@ -15,3 +16,23 @@
 > - After the end of each day (12am- This can be modified - a report will be generated and stored as a csv file)
 > - **Note: The user and server should be connected to the same authentication network**
 
+
+
+> # How to install and run ?
+> - Download or clone the repository
+> - Install python3 from <https://python.org> with pip
+> - Open terminal/command prompt, go to the repository location using cd commmand.
+> - Execute the following commands
+> - Create virtual environment and activate it.(optional)
+> - `pip install -r requirements.txt`
+> - `django-admin createsuper user`
+> - `python manage.py makemigrations`
+> - `python manage.py migrate`
+> - `python manage.py runserver`
+> 
+>
+>
+> - Refer Django documentation for more info <https://docs.djangoproject.com/>
+> - Make sure to open the required ports(default port:8000) to access it from the network.
+> - Login to django-admin console from browser and create user accounts.
+> - Set report generation time and authentication time slot from .
