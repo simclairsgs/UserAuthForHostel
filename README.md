@@ -42,3 +42,18 @@
 > - Set report generation time and authentication time slot in Api/tests.py file (change timezone if reqd. in Api/automatedTasks.py and in Api/views.py)
 > 
 > - After these steps, the backend setup is completed , go to android application repository and build the application with the given instructions.
+> 
+
+---
+
+> # Developers:
+>  - George Simclair Sam - <https://github.com/simclairsgs>
+>  - Sasikumar Nallusamy - <https://github.com/sasikumarnsk>
+>  
+
+<br><br>
+<br><br>
+
+Software License Type : BSD CLAUSE 3
+ 
+For Queries Contact : <simclair.sgs@gmail.com>
