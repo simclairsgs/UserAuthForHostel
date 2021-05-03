@@ -10,6 +10,15 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
+'''
+Copyright (C) 2021 , George Simclair Sam 
+
+This file is part of the UserAuthForHostel project.
+
+This file can not be copied and/or distributed without the express
+permission of George Simclair Sam, simclair.sgs@gmail.com .
+'''
+
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.

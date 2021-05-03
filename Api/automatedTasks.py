@@ -1,3 +1,11 @@
+'''
+Copyright (C) 2021 , George Simclair Sam 
+
+This file is part of the UserAuthForHostel project.
+
+This file can not be copied and/or distributed without the express
+permission of George Simclair Sam, simclair.sgs@gmail.com .
+'''
 from apscheduler.schedulers.background import BackgroundScheduler
 from .import tests
 
@@ -13,17 +21,10 @@ def reset_auth_db():
     print(">>> Reset Auth DB task ended... <<<")
     pass
 
-'''
-def all_tasks():
-    now = datetime.datetime.now()
-    if(now.hour+5 == 24):
-        reset_auth_db()
-    else:
-        print("Hourly Test...Done...")
-'''
+# CHANGE AUTHENTICATION TIME SLOT AND REPORT TIME IN tests.py
 
 def main():
-    scheduler = BackgroundScheduler(timezone="Asia/kolkata")
+    scheduler = BackgroundScheduler(timezone="Asia/kolkata")    #To change Timezone change here
     print("Automated tasks init...")
     scheduler.add_job(reset_auth_db,'cron',hour=tests.RST_DB_GEN_RPRT_TIME)
     scheduler.start()
