@@ -34,6 +34,6 @@
 > - Refer Django documentation for more info <https://docs.djangoproject.com/>
 > - Make sure to open the required ports(default port:8000) to access it from the network.
 > - Login to django-admin console from browser and create user accounts.
-> - Set report generation time and authentication time slot in Api/tests.py file (change timezone if reqd. in Api/AutomatedTasks.py and in Api/views.py)
+> - Set report generation time and authentication time slot in Api/tests.py file (change timezone if reqd. in Api/automatedTasks.py and in Api/views.py)
 > 
 > - After these steps, the backend setup is completed , go to android application repository and build the application with the given instructions.
