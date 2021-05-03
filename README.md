@@ -1,11 +1,10 @@
 > # UserAuthForHostel
 
+***
 
->Biometric User Authentication System for Workplaces using Android and Django Rest API.
->This is the Django Backend repository, corresponding android application repository is given here.
-><http://github.com/simclairsgs>
+> ### Biometric User Authentication System for Workplaces using Android and Django Rest API. This is the Django Backend repository, corresponding android application repository is given here. <http://github.com/simclairsgs>
  
- 
+ ---
  
 > # How to use ?
 >
@@ -16,7 +15,7 @@
 > - After the end of each day (12am- This can be modified - a report will be generated and stored as a csv file)
 > - **Note: The user and server should be connected to the same authentication network**
 
-
+---
 
 > # How to install and run ?
 > - Download or clone the repository
