@@ -2,7 +2,7 @@
 
 >  Biometric User Authentication System for Workplaces using Android and Django Rest API.
 >  This is the Django Backend repository, corresponding android application repository is given here.
->  <http://github.com/simclairsgs>
+>  <https://github.com/simclairsgs/AndroidHAuth>
  
  ---
  
