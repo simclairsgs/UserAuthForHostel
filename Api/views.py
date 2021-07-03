@@ -1,3 +1,12 @@
+'''
+Copyright (C) 2021 , George Simclair Sam 
+
+This file is part of the UserAuthForHostel project.
+
+This file can not be copied and/or distributed without the express
+permission of George Simclair Sam, simclair.sgs@gmail.com .
+'''
+
 from django.shortcuts import render,redirect
 from django.http import HttpResponse,QueryDict,JsonResponse
 from rest_framework.decorators import api_view
@@ -11,7 +20,7 @@ from . import tests
 from .import automatedTasks
 from datetime import datetime,date
 from pytz import timezone
-IST = timezone('Asia/Kolkata')
+IST = timezone('Asia/Kolkata')  #CHANGE TIMEZONE HERE
 
 
 automatedTasks.main()

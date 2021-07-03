@@ -1,3 +1,12 @@
+'''
+Copyright (C) 2021 , George Simclair Sam 
+
+This file is part of the UserAuthForHostel project.
+
+This file can not be copied and/or distributed without the express
+permission of George Simclair Sam, simclair.sgs@gmail.com .
+'''
+
 from rest_framework import serializers
 from .models import Master_Db,Login_Auth_Db,Today_Attendance_Db
 
